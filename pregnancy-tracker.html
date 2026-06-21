@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="בדיקות הריון">
+<title>בדיקות הריון – ליזי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #e85d75;
+    --rose-light: #fdf0f3;
+    --rose-mid: #fce4ea;
+    --emerald: #2e9e6b;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--rose-light);
+    color: var(--slate-800);
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+
+  .header {
+    background: white;
+    border-bottom: 1px solid var(--rose-mid);
+    padding: 20px 16px 16px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(232,93,117,0.08);
+  }
+  .header-eyebrow { font-size: 10px; color: var(--rose); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .header-title { font-size: 22px; font-weight: 700; }
+  .header-sub { font-size: 12px; color: var(--slate-400); margin-top: 2px; }
+
+  .legend { padding: 12px 16px 4px; display: flex; flex-wrap: wrap; gap: 6px; max-width: 600px; margin: 0 auto; }
+  .badge { font-size: 11px; padding: 3px 8px; border-radius: 20px; font-weight: 500; }
+  .b-חובה        { background:#dcfce7; color:#166534; }
+  .b-מומלץמאוד  { background:#e0f2fe; color:#075985; }
+  .b-מומלץ       { background:#dbeafe; color:#1e40af; }
+  .b-אינדיקציה  { background:#fef3c7; color:#92400e; }
+  .b-צורך        { background:#ffedd5; color:#9a3412; }
+  .b-דחוף        { background:#fee2e2; color:#991b1b; }
+  /* venue badges */
+  .v-clalit  { background:#f0fdf4; color:#166534; border:1px solid #86efac; }
+  .v-private { background:#faf5ff; color:#6b21a8; border:1px solid #d8b4fe; }
+  .v-both    { background:#eff6ff; color:#1e40af; border:1px solid #93c5fd; }
+
+  .tabs-wrap { padding: 12px 16px; max-width: 600px; margin: 0 auto; }
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0; padding: 8px 12px; border-radius: 12px; font-size: 13px; font-weight: 500;
+    border: 1.5px solid var(--slate-200); background: white; color: var(--slate-600);
+    cursor: pointer; display: flex; align-items: center; gap: 4px;
+    transition: all 0.15s; font-family: 'Heebo', sans-serif;
+  }
+  .tab.active { background: var(--rose); border-color: var(--rose); color: white; }
+  .tab-badge { font-size: 10px; padding: 1px 5px; border-radius: 10px; font-weight: 700; }
+  .tab.active .tab-badge { background: rgba(255,255,255,0.3); color: white; }
+  .tab:not(.active) .tab-badge { background: #dcfce7; color: #166534; }
+
+  .content { max-width: 600px; margin: 0 auto; padding: 0 16px 32px; }
+  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .section-title { font-size: 15px; font-weight: 600; color: var(--slate-700); }
+  .section-sub { font-size: 11px; color: var(--slate-400); margin-top: 1px; }
+  .progress-chip { font-size: 11px; color: var(--slate-500); background: white; border: 1px solid var(--slate-200); border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+
+  .card { background: white; border: 1.5px solid var(--slate-200); border-radius: 14px; overflow: hidden; }
+  .card.urgent { border-color: #fca5a5; }
+  .card.done { border-color: #bbf7d0; opacity: 0.65; }
+
+  .card-head { padding: 14px; display: flex; align-items: flex-start; gap: 10px; cursor: pointer; user-select: none; }
+
+  /* CHECKBOX FIX */
+  .checkbox {
+    width: 22px; height: 22px; border-radius: 7px;
+    border: 2px solid var(--slate-400);   /* visible border */
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px; transition: all 0.15s; cursor: pointer;
+    background: white;
+  }
+  .checkbox.checked { background: var(--emerald); border-color: var(--emerald); }
+  .check-icon { display: none; }
+  .checkbox.checked .check-icon { display: block; }
+
+  .card-body { flex: 1; min-width: 0; }
+  .card-name { font-size: 14px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+  .card.done .card-name { text-decoration: line-through; color: var(--slate-400); }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+  .card-weeks { font-size: 11px; color: var(--slate-500); }
+  .card-daterange { font-size: 11px; font-weight: 600; color: var(--rose); margin-top: 2px; }
+  .card-appt { font-size: 11px; font-weight: 600; color: var(--emerald); margin-top: 2px; }
+  .card-chevron { color: var(--slate-300); font-size: 11px; margin-top: 3px; flex-shrink: 0; transition: transform 0.2s; }
+  .card.open .card-chevron { transform: rotate(180deg); }
+
+  .card-expand { display: none; padding: 0 14px 14px; border-top: 1px solid var(--slate-100); padding-top: 12px; }
+  .card.open .card-expand { display: block; }
+  .card-details { font-size: 13px; color: var(--slate-700); line-height: 1.6; margin-bottom: 12px; }
+
+  .appt-row {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--slate-100); border: 1px solid var(--slate-200);
+    border-radius: 10px; padding: 10px 12px; margin-bottom: 12px;
+  }
+  .appt-label { font-size: 12px; color: var(--slate-500); font-weight: 500; white-space: nowrap; }
+  .appt-input { font-size: 13px; border: none; background: transparent; color: var(--slate-700); font-family: 'Heebo', sans-serif; flex: 1; outline: none; min-width: 0; direction: ltr; text-align: right; }
+  .appt-clear { font-size: 13px; color: var(--slate-300); background: none; border: none; cursor: pointer; padding: 0 2px; font-family: 'Heebo', sans-serif; }
+
+  .meta-row { display: flex; flex-wrap: wrap; gap: 16px; }
+  .meta-label { font-size: 10px; color: var(--slate-400); margin-bottom: 2px; }
+  .meta-value { font-size: 12px; font-weight: 500; color: var(--slate-600); }
+
+  .footer-note { background: white; border: 1px solid var(--rose-mid); border-radius: 14px; padding: 14px; margin-top: 20px; font-size: 12px; color: var(--slate-500); line-height: 1.6; }
+
+  .install-tip {
+    background: linear-gradient(135deg, #fff7f9 0%, #f0fdf7 100%);
+    border: 1px dashed #f9a8b8; border-radius: 14px; padding: 12px 14px; margin-bottom: 14px;
+    font-size: 12px; color: var(--slate-600); line-height: 1.6;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .install-tip-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .install-tip-close { margin-right: auto; font-size: 14px; color: var(--slate-300); background: none; border: none; cursor: pointer; flex-shrink: 0; font-family: 'Heebo', sans-serif; padding: 0 0 0 4px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow">כללית · הריון · ליזי</div>
+  <div class="header-title">מדריך בדיקות הריון</div>
+  <div class="header-sub">LMP: 04/05/26 · מועד לידה: 08/02/27 · כללית מושלם/פלטינום</div>
+</div>
+
+<div class="legend">
+  <span class="badge b-חובה">חובה</span>
+  <span class="badge b-מומלץמאוד">מומלץ מאוד</span>
+  <span class="badge b-מומלץ">מומלץ</span>
+  <span class="badge b-אינדיקציה">לפי אינדיקציה</span>
+  <span class="badge b-צורך">לפי צורך</span>
+  <span class="badge v-clalit">כללית</span>
+  <span class="badge v-both">כללית + פרטי</span>
+  <span class="badge v-private">פרטי בלבד</span>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="content" id="content"></div>
+
+<script>
+const SECTIONS = [
+  { key:"pre",  label:"לפני הריון",  emoji:"🌰", sub:"בדיקות מומלצות בשלב התכנון" },
+  { key:"t1",   label:"שליש ראשון", emoji:"🫐", sub:"שבועות 1–13 | עד 09/08/26" },
+  { key:"t2",   label:"שליש שני",   emoji:"🍑", sub:"שבועות 14–27 | עד 22/11/26" },
+  { key:"t3",   label:"שליש שלישי",emoji:"🍉", sub:"שבועות 28–40 | עד 08/02/27" },
+  { key:"priv", label:"פרטי / נוסף",emoji:"✨", sub:"שירותים מחוץ לסל" },
+];
+
+// venue: "clalit" | "both" | "private"
+const TESTS = {
+  pre: [
+    {
+      name:"סקר גנטי אחיד מורחב",
+      weeks:"לפני ההריון / בהקדם",
+      dateRange:"כמה שיותר מוקדם",
+      tag:"חובה",
+      venue:"clalit",
+      cost:"ללא עלות",
+      details:"בדיקת דם. מאתרת נשאות ל-600+ מחלות גנטיות. ניתן לבצע ללא הפניה – פונים לאחות מידע גנטי בכללית. במקרה של הריון חד-הורי מבוצעת לאם בלבד."
+    },
+  ],
+  t1: [
+    {
+      name:"ביקור ראשון אצל ד״ר בוצ׳ן",
+      weeks:"שבועות 6–8", dateRange:"15/06/26 – 05/07/26",
+      tag:"חובה", urgent:true, venue:"clalit", cost:"השתתפות עצמית",
+      details:"פתיחת תיק הריון, הפניות לבדיקות, המלצות ויטמינים. דיון על תוכנית לידה (קיסרי) ופרוטוקול סוכרת הריון. הפגישה המתוכננת: 22/06."
+    },
+    {
+      name:"אולטרסאונד ראשון – דופק עובר",
+      weeks:"שבועות 6–7", dateRange:"15/06/26 – 28/06/26",
+      tag:"חובה", urgent:true, venue:"clalit", cost:"השתתפות עצמית",
+      details:"אישור הריון ברחם, בדיקת דופק, מספר עוברים, גיל הריון לפי CRL. מבוצע בכללית בהפניה."
+    },
+    {
+      name:"בדיקות דם ושתן ראשוניות",
+      weeks:"שבועות 6–8", dateRange:"15/06/26 – 05/07/26",
+      tag:"חובה", urgent:true, venue:"clalit", cost:"ללא עלות",
+      details:"ספירת דם, המוגלובין, פריטין, TSH, ויטמין D, גלוקוז בצום, HbA1c, סוג דם + RH, אדמת, עגבת, HIV, הפטיטיס B. כולן בסל הבסיסי."
+    },
+    {
+      name:"שקיפות עורפית + סקר שליש ראשון",
+      weeks:"שבועות 11–13+6", dateRange:"20/07/26 – 09/08/26",
+      tag:"מומלץ מאוד", venue:"both", cost:"כללית: השתתפות עצמית | פרטי: החזר מושלם",
+      details:"אולטרסאונד עורף + בדיקת דם (PAPP-A + free β-hCG). מבוצע בסל הבסיסי במכוני הסדר של כללית. ⚠️ חלון זמן מוגבל – יש לקבוע מוקדם."
+    },
+    {
+      name:"NIPT (בדיקת דנ״א עוברי)",
+      weeks:"מ-שבוע 10 ועד שבוע 13", dateRange:"13/07/26 – 09/08/26",
+      tag:"מומלץ מאוד", venue:"private", cost:"₪2,400–₪6,000 | החזר חלקי מושלם פלטינום",
+      details:"בדיקת דם לאיתור טריזומיה 21/18/13. בדיקת סקר בלבד (לא אבחנתית). אינה בסל הבסיסי – מבוצעת פרטית בלבד עם החזר חלקי דרך מושלם/פלטינום. ⚠️ מומלץ מאוד בגיל 40+."
+    },
+    {
+      name:"סיסי שליה (CVS)",
+      weeks:"שבועות 11–14", dateRange:"20/07/26 – 16/08/26",
+      tag:"לפי אינדיקציה", venue:"both", cost:"כללית: 800₪ השתתפות עצמית | פרטי: החזר מושלם",
+      details:"בדיקה פולשנית אבחנתית. מגיל 32+ נכללת בסל הבסיסי (₪800 השתתפות עצמית, מכוני הסדר). חלופית לדיקור מי שפיר – ניתן לממש רק אחת מהשתיים. מבוצעת לפי אינדיקציה: ממצא חריג בסקר / גיל / גורם סיכון."
+    },
+  ],
+  t2: [
+    {
+      name:"סקירת מערכות מוקדמת",
+      weeks:"שבועות 15–17", dateRange:"17/08/26 – 06/09/26",
+      tag:"חובה", venue:"both", cost:"כללית מושלם/פלטינום: השתתפות עצמית | פרטי: החזר 75% (תקרה משותפת עם מאוחרת)",
+      details:"אולטרסאונד ראשוני של אברי העובר. ⚠️ כללית מאפשרת מימוש אחת בלבד – מוקדמת או מאוחרת – דרך מושלם/פלטינום. מומלץ לשמור את הזכאות לסקירה המאוחרת שהיא הקריטית יותר."
+    },
+    {
+      name:"סקר ביוכימי שליש שני (תבחין)",
+      weeks:"שבועות 15–18", dateRange:"17/08/26 – 13/09/26",
+      tag:"מומלץ", venue:"clalit", cost:"תבחין משולש: מסובסד | תבחין מרובע: תוספת תשלום",
+      details:"בדיקת דם: AFP, HCG, אסטריול (± אינהיבין). מחשבת סיכון לתסמונת דאון ומומים בצינור העצבי. מבוצע בסל הבסיסי בכללית."
+    },
+    {
+      name:"בדיקת העמסת סוכר מוקדמת (GCT)",
+      weeks:"שבועות 14–16", dateRange:"17/08/26 – 31/08/26",
+      tag:"מומלץ מאוד", venue:"clalit", cost:"ללא עלות",
+      details:"⚠️ מומלץ בגלל סוכרת הריון בהריון הקודם + BMI 30 + גיל 40. בדיקה מוקדמת לפי אינדיקציה – לדון עם ד״ר בוצ׳ן בביקור הראשון. מבוצע בכללית ללא עלות."
+    },
+    {
+      name:"סקירת מערכות מאוחרת",
+      weeks:"שבועות 20–23", dateRange:"21/09/26 – 18/10/26",
+      tag:"חובה", venue:"both", cost:"כללית: השתתפות עצמית | פרטי: החזר 75% עד תקרה דרך מושלם",
+      details:"הבדיקה הקריטית ביותר – מוח, לב, עמוד שדרה, כליות, פנים, שלמות אברים. ניתן לבצע בכללית (מכוני הסדר) או פרטית עם החזר 75% דרך מושלם. ⚠️ זכאות אחת בלבד למימון (מוקדמת או מאוחרת) – כדאי לשמור לכאן."
+    },
+    {
+      name:"אקו לב עוברי",
+      weeks:"שבועות 22–24", dateRange:"05/10/26 – 25/10/26",
+      tag:"מומלץ מאוד", venue:"both", cost:"פרטי ₪800–₪1,500 | החזר חלקי מושלם/פלטינום",
+      details:"אולטרסאונד ממוקד ללב העובר. ⚠️ מומלץ בגלל סוכרת הריון (גורם סיכון למומי לב עובריים). אינו בסל הבסיסי – ניתן לקבל החזר חלקי דרך מושלם/פלטינום."
+    },
+    {
+      name:"דיקור מי שפיר",
+      weeks:"שבועות 17–23", dateRange:"31/08/26 – 18/10/26",
+      tag:"לפי אינדיקציה", venue:"both", cost:"כללית: 800₪ השתתפות עצמית | פרטי: החזר מושלם",
+      details:"בדיקה פולשנית אבחנתית. מגיל 32+ בסל הבסיסי (₪800 השתתפות עצמית). חלופית לסיסי שליה – ניתן לממש רק אחת. מבוצעת לפי אינדיקציה: גיל 35+, ממצא חריג בסקר / NIPT."
+    },
+    {
+      name:"בדיקת העמסת סוכר שגרתית (GTT)",
+      weeks:"שבועות 24–28", dateRange:"19/10/26 – 22/11/26",
+      tag:"חובה", venue:"clalit", cost:"ללא עלות",
+      details:"שתיית 50g גלוקוז + בדיקת דם שעה לאחר מכן. אם >140 → GTT מורחב 100g/3 שעות. מבוצע בכללית ללא עלות."
+    },
+    {
+      name:"בדיקות דם – ספירה + פריטין",
+      weeks:"שבועות 24–28", dateRange:"19/10/26 – 22/11/26",
+      tag:"חובה", venue:"clalit", cost:"ללא עלות",
+      details:"ספירת דם + פריטין לאיתור אנמיה. Rh שלילי – גם נוגדנים ומתן אנטי-D. הכל בסל הבסיסי."
+    },
+  ],
+  t3: [
+    {
+      name:"ביקורים מסודרים – רופא + אחות",
+      weeks:"שבועות 28–36", dateRange:"16/11/26 – 17/01/27",
+      tag:"חובה", venue:"clalit", cost:"השתתפות עצמית רגילה",
+      details:"מעקב לחץ דם, משקל, קרקעית רחם, דופק עובר. מ-שבוע 32 – ביקורי אחות כל שבועיים. הכל בכללית."
+    },
+    {
+      name:"אולטרסאונד גדילה שליש שלישי",
+      weeks:"שבועות 32–36", dateRange:"14/12/26 – 17/01/27",
+      tag:"מומלץ", venue:"both", cost:"כללית: השתתפות עצמית | פרטי ₪400–₪700",
+      details:"הערכת גודל וצמיחת עובר, מיקום שליה, כמות מי שפיר ומצג (חשוב לתכנון קיסרי). ניתן לבצע בכללית או פרטית."
+    },
+    {
+      name:"תרביות GBS (סטרפטוקוקוס B)",
+      weeks:"שבועות 35–37", dateRange:"04/01/27 – 24/01/27",
+      tag:"חובה", venue:"clalit", cost:"ללא עלות",
+      details:"תרבית נרתיקית/פי הטבעת לאיתור GBS. אם חיובי – אנטיביוטיקה בלידה. בכללית ללא עלות."
+    },
+    {
+      name:"ייעוץ הרדמה טרום ניתוחי (קיסרי)",
+      weeks:"שבועות 35–37", dateRange:"04/01/27 – 24/01/27",
+      tag:"חובה", venue:"clalit", cost:"ללא עלות",
+      details:"פגישת הכנה עם מרדים לקיסרי המתוכנן. קביעת מועד הניתוח (לרוב שבוע 38–39). מתואם דרך בית החולים."
+    },
+    {
+      name:"CTG (מוניטור עוברי)",
+      weeks:"מ-שבוע 36", dateRange:"מ-11/01/27",
+      tag:"לפי צורך", venue:"clalit", cost:"ללא עלות",
+      details:"מעקב אלקטרוני אחר דופק עובר לקראת הלידה. מבוצע בכללית לפי הצורך הקליני."
+    },
+    {
+      name:"קיסרי מתוכנן",
+      weeks:"שבועות 38–39", dateRange:"01/02/27 – 14/02/27",
+      tag:"חובה", venue:"clalit", cost:"כלול בסל",
+      details:"לידה בקיסרי לפי תכנון. בדיקות דם טרום ניתוחיות, קביעת מועד עם ד״ר בוצ׳ן ואנסתזיולוג."
+    },
+  ],
+  priv: [
+    {
+      name:"ייעוץ תזונאית / דיאטנית",
+      when:"כמה שיותר מוקדם", dateRange:"דחוף – לפני שבוע 10",
+      venue:"both", cost:"הפניה כללית: כלול | פרטי ₪350–₪600/פגישה",
+      details:"⚠️ עדיפות ראשונה! סוכרת הריון קודמת + BMI 30 + גיל 40. לבקש הפניה דרך ד״ר בוצ׳ן – דיאטנית בכללית."
+    },
+    {
+      name:"ייעוץ גנטי",
+      when:"לפי ממצאי הסקרים", dateRange:"לפי ממצאים",
+      venue:"both", cost:"כללית בהפניה: כלול | פרטי ₪500–₪1,000",
+      details:"בעקבות ממצא חריג בסקר, היסטוריה משפחתית. ניתן לקבל הפניה מד״ר בוצ׳ן לגנטיקאית בכללית."
+    },
+    {
+      name:"ביקורי רופא נשים פרטי",
+      when:"לאורך ההריון", dateRange:"לפי בחירה",
+      venue:"private", cost:"₪400–₪700/ביקור | החזר חלקי מושלם",
+      details:"מעקב אישי, זמינות גבוהה, ליווי עד לידה. אינו כלול בסל הבסיסי."
+    },
+    {
+      name:"קורס הכנה ללידה",
+      when:"שליש שלישי", dateRange:"נובמבר–ינואר 2027",
+      venue:"both", cost:"₪800–₪2,500 | החזר חלקי מושלם",
+      details:"סדנאות זוגיות, שיטות להפגת כאב, הנקה. חלקן מוצעות גם דרך כללית."
+    },
+    {
+      name:"דולה / ליווי לידה",
+      when:"לידה", dateRange:"פברואר 2027",
+      venue:"private", cost:"₪2,000–₪5,000 | ייתכן החזר חלקי פלטינום",
+      details:"תמיכה אישית רצופה בלידה. אינה בסל הבסיסי."
+    },
+    {
+      name:"שימור דם טבורי",
+      when:"לידה – יש לסגור חוזה מראש", dateRange:"לפני הלידה",
+      venue:"private", cost:"₪3,000–₪5,000 + ₪500–₪1,000/שנה",
+      details:"אחסון תאי גזע מדם חבל הטבור. שנוי במחלוקת רפואית – האיגודים הרפואיים אינם ממליצים על שימור פרטי."
+    },
+  ],
+};
+
+const TAG_CLS = {
+  "חובה":        "badge b-חובה",
+  "מומלץ מאוד": "badge b-מומלץמאוד",
+  "מומלץ":       "badge b-מומלץ",
+  "לפי אינדיקציה":"badge b-אינדיקציה",
+  "לפי צורך":    "badge b-צורך",
+};
+const VENUE_CLS = { clalit:"badge v-clalit", both:"badge v-both", private:"badge v-private" };
+const VENUE_LBL = { clalit:"כללית", both:"כללית + פרטי", private:"פרטי בלבד" };
+
+const FOOTER = {
+  t1:"🫐 שליש ראשון: שבוע 6 = אוכמנייה (~6מ״מ). שבוע 13 = שזיף קטן (~7–8 ס״מ).",
+  t2:"🍑 שליש שני: שבוע 14 = לימון. שבוע 20 = אפרסק (~25 ס״מ, ~300 גרם). שבוע 27 = חצילון (~36 ס״מ, ~900 גרם).",
+  t3:"🍉 שליש שלישי: שבוע 28 = אנגוריה (~37 ס״מ, ~1 ק״ג). שבוע 36 = ~47 ס״מ, ~2.6 ק״ג. שבוע 38–39 = ~3–3.5 ק״ג.",
+  pre:"💡 כללית מושלם/פלטינום: החזר 75% על בדיקות פרטיות עד תקרה של ~₪2,248 להריון. שמרי קבלות.",
+  priv:"💡 לכל בדיקה פרטית – שמרי קבלה מקורית + סיכום רפואי להגשת בקשת החזר דרך מושלם.",
+};
+
+let activeTab = "t1";
+let state = {};
+
+function loadState() {
+  try { const s = localStorage.getItem("preg-v2"); if (s) state = JSON.parse(s); } catch(_) {}
+}
+function saveState() {
+  try { localStorage.setItem("preg-v2", JSON.stringify(state)); } catch(_) {}
+}
+function getItem(sec, idx) { return state[sec+"-"+idx] || { checked:false, appt:"" }; }
+function setChecked(sec, idx, val) { state[sec+"-"+idx] = {...getItem(sec,idx), checked:val}; saveState(); }
+function setAppt(sec, idx, val)    { state[sec+"-"+idx] = {...getItem(sec,idx), appt:val};    saveState(); }
+function doneCount(sec) { return (TESTS[sec]||[]).filter((_,i)=>getItem(sec,i).checked).length; }
+
+function fmtDate(val) {
+  if (!val) return "";
+  const [y,m,d] = val.split("-");
+  return `${d}/${m}/${y.slice(2)}`;
+}
+
+function renderTabs() {
+  document.getElementById("tabs").innerHTML = SECTIONS.map(s => {
+    const done = doneCount(s.key);
+    const total = (TESTS[s.key]||[]).length;
+    const badge = done > 0 ? `<span class="tab-badge">${done}/${total}</span>` : "";
+    return `<button class="tab${activeTab===s.key?" active":""}" onclick="switchTab('${s.key}')">
+      ${s.emoji} ${s.label}${badge}
+    </button>`;
+  }).join("");
+}
+
+function renderContent() {
+  const sec = SECTIONS.find(s=>s.key===activeTab);
+  const tests = TESTS[activeTab]||[];
+  const isPriv = activeTab==="priv";
+  const done = doneCount(activeTab);
+
+  const tip = !localStorage.getItem("tip-closed") ? `
+    <div class="install-tip" id="itip">
+      <span class="install-tip-icon">📲</span>
+      <span>להוספה למסך הבית: <strong>שתפי</strong> בספארי ← <strong>הוסף למסך הבית</strong>. הנתונים יישמרו.</span>
+      <button class="install-tip-close" onclick="closeTip()">✕</button>
+    </div>` : "";
+
+  const cards = tests.map((t,i) => {
+    const item = getItem(activeTab, i);
+    const apptDisplay = fmtDate(item.appt);
+    return `
+    <div class="card${item.checked?" done":""}${t.urgent&&!item.checked?" urgent":""}" id="c-${activeTab}-${i}">
+      <div class="card-head" onclick="toggleCard('${activeTab}',${i})">
+        <div class="checkbox${item.checked?" checked":""}" onclick="event.stopPropagation();toggleCheck('${activeTab}',${i})">
+          <svg class="check-icon" width="12" height="10" viewBox="0 0 12 10" fill="none">
+            <path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-name">${t.name}</div>
+          <div class="card-tags">
+            ${t.tag ? `<span class="${TAG_CLS[t.tag]||"badge"}">${t.tag}</span>` : ""}
+            ${t.venue ? `<span class="${VENUE_CLS[t.venue]||"badge"}">${VENUE_LBL[t.venue]}</span>` : ""}
+            ${t.urgent&&!item.checked ? `<span class="badge b-דחוף">⚡ דחוף</span>` : ""}
+          </div>
+          <div class="card-weeks">${isPriv?(t.when||""):(t.weeks||"")}</div>
+          ${t.dateRange?`<div class="card-daterange">📅 ${t.dateRange}</div>`:""}
+          ${apptDisplay?`<div class="card-appt">🗓 תור: ${apptDisplay}</div>`:""}
+        </div>
+        <div class="card-chevron">▼</div>
+      </div>
+      <div class="card-expand">
+        <div class="card-details">${t.details}</div>
+        <div class="appt-row">
+          <span class="appt-label">🗓 תאריך תור:</span>
+          <input type="date" class="appt-input" value="${item.appt||""}"
+            onchange="updateAppt('${activeTab}',${i},this.value)"
+            onclick="event.stopPropagation()">
+          ${item.appt?`<button class="appt-clear" onclick="event.stopPropagation();updateAppt('${activeTab}',${i},'')">✕</button>`:""}
+        </div>
+        <div class="meta-row">
+          ${t.cost?`<div><div class="meta-label">עלות</div><div class="meta-value">${t.cost}</div></div>`:""}
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  document.getElementById("content").innerHTML = `
+    ${tip}
+    <div class="section-header">
+      <div>
+        <div class="section-title">${sec.emoji} ${sec.label}</div>
+        <div class="section-sub">${sec.sub}</div>
+      </div>
+      <div class="progress-chip">${done}/${tests.length} בוצע</div>
+    </div>
+    <div class="cards">${cards}</div>
+    ${FOOTER[activeTab]?`<div class="footer-note">${FOOTER[activeTab]}</div>`:""}
+  `;
+}
+
+function render() { renderTabs(); renderContent(); }
+function switchTab(k) { activeTab=k; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+function toggleCard(sec,idx) { document.getElementById(`c-${sec}-${idx}`).classList.toggle("open"); }
+function toggleCheck(sec,idx) { setChecked(sec,idx,!getItem(sec,idx).checked); render(); }
+function updateAppt(sec,idx,val) {
+  setAppt(sec,idx,val); render();
+  setTimeout(()=>{ const c=document.getElementById(`c-${sec}-${idx}`); if(c) c.classList.add("open"); },10);
+}
+function closeTip() { localStorage.setItem("tip-closed","1"); document.getElementById("itip").remove(); }
+
+loadState();
+render();
+</script>
+</body>
+</html>
