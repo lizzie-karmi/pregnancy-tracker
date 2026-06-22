@@ -20,50 +20,39 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:'Heebo',sans-serif;background:var(--rose-light);color:var(--s800);min-height:100vh;padding-bottom:env(safe-area-inset-bottom,20px)}
-
 .hdr{background:white;border-bottom:1px solid var(--rose-mid);padding:20px 16px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(232,93,117,.08)}
 .hdr-eye{font-size:10px;color:var(--rose);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
 .hdr-title{font-size:22px;font-weight:700}
 .hdr-sub{font-size:12px;color:var(--s400);margin-top:2px}
-
 .legend{padding:12px 16px 4px;display:flex;flex-wrap:wrap;gap:6px;max-width:600px;margin:0 auto}
 .badge{font-size:11px;padding:3px 8px;border-radius:20px;font-weight:500}
-.bC{background:#dcfce7;color:#166534}
-.bMM{background:#e0f2fe;color:#075985}
-.bM{background:#dbeafe;color:#1e40af}
-.bA{background:#fef3c7;color:#92400e}
-.bZ{background:#ffedd5;color:#9a3412}
-.bD{background:#fee2e2;color:#991b1b}
+.bC{background:#dcfce7;color:#166534}.bMM{background:#e0f2fe;color:#075985}.bM{background:#dbeafe;color:#1e40af}
+.bA{background:#fef3c7;color:#92400e}.bZ{background:#ffedd5;color:#9a3412}.bD{background:#fee2e2;color:#991b1b}
 .vK{background:#f0fdf4;color:#166534;border:1px solid #86efac}
 .vP{background:#faf5ff;color:#6b21a8;border:1px solid #d8b4fe}
 .vB{background:#eff6ff;color:#1e40af;border:1px solid #93c5fd}
-
 .tabs-wrap{padding:12px 16px;max-width:600px;margin:0 auto}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:8px 12px;border-radius:12px;font-size:13px;font-weight:500;border:1.5px solid var(--s200);background:white;color:var(--s600);cursor:pointer;display:flex;align-items:center;gap:4px;transition:all .15s;font-family:'Heebo',sans-serif}
+.tab{flex-shrink:0;padding:8px 12px;border-radius:12px;font-size:13px;font-weight:500;border:1.5px solid var(--s200);background:white;color:var(--s600);cursor:pointer;display:flex;align-items:center;gap:4px;font-family:'Heebo',sans-serif}
 .tab.on{background:var(--rose);border-color:var(--rose);color:white}
 .tbadge{font-size:10px;padding:1px 5px;border-radius:10px;font-weight:700}
 .tab.on .tbadge{background:rgba(255,255,255,.3);color:white}
 .tab:not(.on) .tbadge{background:#dcfce7;color:#166534}
-
 .content{max-width:600px;margin:0 auto;padding:0 16px 32px}
 .sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .sec-title{font-size:15px;font-weight:600;color:var(--s700)}
 .sec-sub{font-size:11px;color:var(--s400);margin-top:1px}
 .prog{font-size:11px;color:var(--s500);background:white;border:1px solid var(--s200);border-radius:20px;padding:3px 10px;white-space:nowrap}
-
 .cards{display:flex;flex-direction:column;gap:10px}
 .card{background:white;border:1.5px solid var(--s200);border-radius:14px;overflow:hidden}
 .card.urgent{border-color:#fca5a5}
 .card.done{border-color:#bbf7d0;opacity:.65}
 .card-head{padding:14px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
-
-.chk{width:22px;height:22px;border-radius:7px;border:2px solid var(--s400);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s;cursor:pointer;background:white}
+.chk{width:22px;height:22px;border-radius:7px;border:2px solid var(--s400);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;cursor:pointer;background:white}
 .chk.on{background:var(--emerald);border-color:var(--emerald)}
 .chk-ico{display:none}
 .chk.on .chk-ico{display:block}
-
 .card-body{flex:1;min-width:0}
 .card-name{font-size:14px;font-weight:600;line-height:1.3;margin-bottom:4px}
 .card.done .card-name{text-decoration:line-through;color:var(--s400)}
@@ -71,46 +60,38 @@ body{font-family:'Heebo',sans-serif;background:var(--rose-light);color:var(--s80
 .card-weeks{font-size:11px;color:var(--s500)}
 .card-dr{font-size:11px;font-weight:600;color:var(--rose);margin-top:2px}
 .card-appt{font-size:11px;font-weight:600;color:var(--emerald);margin-top:2px}
-.card-chev{color:var(--s300);font-size:11px;margin-top:3px;flex-shrink:0;transition:transform .2s}
-.card.open .card-chev{transform:rotate(180deg)}
-
+.card-chev{color:var(--s300);font-size:11px;margin-top:3px;flex-shrink:0}
 .card-exp{display:none;padding:12px 14px 14px;border-top:1px solid var(--s100)}
 .card.open .card-exp{display:block}
 .card-det{font-size:13px;color:var(--s700);line-height:1.6;margin-bottom:12px}
 
-.appt-row{background:var(--s100);border:1px solid var(--s200);border-radius:10px;padding:10px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.appt-lbl{font-size:12px;color:var(--s500);font-weight:500;white-space:nowrap}
-.appt-val{font-size:13px;font-weight:600;color:var(--s700);flex:1}
-.appt-add{font-size:12px;color:var(--rose);background:none;border:1.5px dashed #f9a8b8;border-radius:8px;padding:5px 0;cursor:pointer;font-family:'Heebo',sans-serif;font-weight:500;width:100%;text-align:center}
-.appt-btn{font-size:13px;color:var(--s400);background:none;border:none;cursor:pointer;padding:0 3px;font-family:'Heebo',sans-serif}
-.appt-hidden{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+/* DATE INPUT — always visible inside expanded card */
+.appt-block{background:var(--s100);border:1px solid var(--s200);border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.appt-top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.appt-lbl{font-size:12px;color:var(--s500);font-weight:500}
+.appt-val{font-size:12px;font-weight:600;color:var(--emerald);flex:1}
+.appt-clear{font-size:12px;color:var(--s400);background:none;border:none;cursor:pointer;font-family:'Heebo',sans-serif;padding:0}
+.appt-input{display:block;width:100%;max-width:100%;box-sizing:border-box;min-height:42px;line-height:24px;font-size:14px;border:1.5px solid var(--s300);border-radius:8px;padding:8px 10px;background:white;font-family:'Heebo',sans-serif;color:var(--s700);outline:none;direction:ltr;-webkit-appearance:none;appearance:none}
+.appt-input:focus{border-color:var(--rose)}
 
 .meta-row{display:flex;flex-wrap:wrap;gap:16px}
 .meta-lbl{font-size:10px;color:var(--s400);margin-bottom:2px}
 .meta-val{font-size:12px;font-weight:500;color:var(--s600)}
-
 .foot-note{background:white;border:1px solid var(--rose-mid);border-radius:14px;padding:14px;margin-top:20px;font-size:12px;color:var(--s500);line-height:1.6}
 </style>
 </head>
 <body>
-
 <div class="hdr">
   <div class="hdr-eye">כללית · הריון · ליזי</div>
   <div class="hdr-title">מדריך בדיקות הריון</div>
   <div class="hdr-sub">LMP: 01/05/26 · מועד לידה: 04/02/27 · כללית מושלם/פלטינום</div>
 </div>
-
 <div class="legend">
-  <span class="badge bC">חובה</span>
-  <span class="badge bMM">מומלץ מאוד</span>
-  <span class="badge bM">מומלץ</span>
-  <span class="badge bA">לפי אינדיקציה</span>
+  <span class="badge bC">חובה</span><span class="badge bMM">מומלץ מאוד</span>
+  <span class="badge bM">מומלץ</span><span class="badge bA">לפי אינדיקציה</span>
   <span class="badge bZ">לפי צורך</span>
-  <span class="badge vK">כללית</span>
-  <span class="badge vB">כללית + פרטי</span>
-  <span class="badge vP">פרטי בלבד</span>
+  <span class="badge vK">כללית</span><span class="badge vB">כללית + פרטי</span><span class="badge vP">פרטי בלבד</span>
 </div>
-
 <div class="tabs-wrap"><div class="tabs" id="tabs"></div></div>
 <div class="content" id="content"></div>
 
@@ -120,237 +101,214 @@ var SECTIONS = [
   {key:"t1",  label:"שליש ראשון", emoji:"🫐", sub:"שבועות 1–13 | עד 06/08/26"},
   {key:"t2",  label:"שליש שני",   emoji:"🍑", sub:"שבועות 14–27 | עד 12/11/26"},
   {key:"t3",  label:"שליש שלישי",emoji:"🍉", sub:"שבועות 28–40 | עד 04/02/27"},
-  {key:"priv",label:"פרטי / נוסף",emoji:"✨", sub:"שירותים מחוץ לסל"},
+  {key:"priv",label:"פרטי / נוסף",emoji:"✨", sub:"שירותים מחוץ לסל"}
 ];
-
 var TESTS = {
 pre:[
-  {name:"סקר גנטי אחיד מורחב", weeks:"לפני ההריון / בהקדם", dr:"כמה שיותר מוקדם", tag:"C", venue:"K", cost:"ללא עלות", det:"בדיקת דם. מאתרת נשאות ל-600+ מחלות גנטיות. ללא הפניה – פונים לאחות מידע גנטי בכללית. במקרה של הריון חד-הורי מבוצעת לאם בלבד."}
+  {name:"סקר גנטי אחיד מורחב",weeks:"לפני ההריון / בהקדם",dr:"כמה שיותר מוקדם",tag:"C",venue:"K",cost:"ללא עלות",det:"בדיקת דם. מאתרת נשאות ל-600+ מחלות גנטיות. ללא הפניה – פונים לאחות מידע גנטי בכללית."}
 ],
 t1:[
-  {name:"ביקור ראשון אצל ד״ר בוצ׳ן", weeks:"שבועות 6–8", dr:"12/06/26 – 02/07/26", tag:"C", urgent:true, venue:"K", cost:"השתתפות עצמית", det:"פתיחת תיק הריון, הפניות לבדיקות, המלצות ויטמינים. דיון על תוכנית לידה (קיסרי), פרוטוקול GDM, תכנון GTT מוקדם. בוצע: 17/06/26."},
-  {name:"אולטרסאונד ראשון – דופק עובר", weeks:"שבועות 6–7", dr:"12/06/26 – 25/06/26", tag:"C", urgent:true, venue:"K", cost:"השתתפות עצמית", det:"אישור הריון ברחם, בדיקת דופק, מספר עוברים, גיל הריון לפי CRL."},
-  {name:"בדיקות דם ושתן ראשוניות", weeks:"שבועות 6–8", dr:"12/06/26 – 02/07/26", tag:"C", urgent:true, venue:"K", cost:"ללא עלות", det:"ספירת דם, המוגלובין, פריטין, TSH, ויטמין D, גלוקוז בצום, HbA1c, סוג דם + RH, אדמת, עגבת, HIV, הפטיטיס B."},
-  {name:"אולטרסאונד שני – מעקב גדילה", weeks:"שבועות 9–10", dr:"02/07/26 – 08/07/26", tag:"C", urgent:true, venue:"K", cost:"השתתפות עצמית", det:"מעקב אחר התפתחות העובר, אישור דופק, מדידת CRL לאישור גיל הריון. נסגם עם ד״ר בוצ׳ן – לתאם בין 02/07 ל-08/07."},
-  {name:"שקיפות עורפית + סקר שליש ראשון", weeks:"שבועות 11–13+6", dr:"17/07/26 – 06/08/26", tag:"MM", venue:"B", cost:"כללית: השתתפות עצמית | פרטי: החזר מושלם", det:"אולטרסאונד עורף + בדיקת דם (PAPP-A + free β-hCG). חישוב סיכון לתסמונת דאון. ⚠️ חלון זמן מוגבל – יש לקבוע מוקדם."},
-  {name:"NIPT (בדיקת דנ״א עוברי)", weeks:"מ-שבוע 10 ועד שבוע 13", dr:"10/07/26 – 06/08/26", tag:"MM", venue:"P", cost:"₪2,400–₪6,000 | החזר חלקי מושלם פלטינום", det:"בדיקת דם לאיתור טריזומיה 21/18/13. בדיקת סקר בלבד (לא אבחנתית). אינה בסל הבסיסי – פרטית עם החזר חלקי. ⚠️ מומלץ מאוד בגיל 40+."},
-  {name:"סיסי שליה (CVS)", weeks:"שבועות 11–14", dr:"17/07/26 – 13/08/26", tag:"A", venue:"B", cost:"כללית: ₪800 השתתפות עצמית | פרטי: החזר מושלם", det:"בדיקה פולשנית אבחנתית. מגיל 32+ בסל הבסיסי. חלופית לדיקור מי שפיר – ניתן לממש רק אחת. לפי ממצאי הסקרים."}
+  {name:"ביקור ראשון אצל ד\"ר בוצ'ן",weeks:"שבועות 6–8",dr:"12/06/26 – 02/07/26",tag:"C",urgent:true,venue:"K",cost:"השתתפות עצמית",det:"פתיחת תיק הריון, הפניות לבדיקות, המלצות ויטמינים. דיון על תוכנית לידה (קיסרי), פרוטוקול GDM. בוצע: 17/06/26."},
+  {name:"אולטרסאונד ראשון – דופק עובר",weeks:"שבועות 6–7",dr:"12/06/26 – 25/06/26",tag:"C",urgent:true,venue:"K",cost:"השתתפות עצמית",det:"אישור הריון ברחם, בדיקת דופק, מספר עוברים, גיל הריון לפי CRL."},
+  {name:"בדיקות דם ושתן ראשוניות",weeks:"שבועות 6–8",dr:"12/06/26 – 02/07/26",tag:"C",urgent:true,venue:"K",cost:"ללא עלות",det:"ספירת דם, המוגלובין, פריטין, TSH, ויטמין D, גלוקוז בצום, HbA1c, סוג דם + RH, אדמת, עגבת, HIV, הפטיטיס B."},
+  {name:"אולטרסאונד שני – מעקב גדילה",weeks:"שבועות 9–10",dr:"02/07/26 – 08/07/26",tag:"C",urgent:true,venue:"K",cost:"השתתפות עצמית",det:"מעקב אחר התפתחות העובר, אישור דופק, מדידת CRL. נסגם עם ד\"ר בוצ'ן – לתאם בין 02/07 ל-08/07."},
+  {name:"שקיפות עורפית + סקר שליש ראשון",weeks:"שבועות 11–13+6",dr:"17/07/26 – 06/08/26",tag:"MM",venue:"B",cost:"כללית: השתתפות עצמית | פרטי: החזר מושלם",det:"אולטרסאונד עורף + בדיקת דם (PAPP-A + free β-hCG). חישוב סיכון לתסמונת דאון. ⚠️ חלון זמן מוגבל – יש לקבוע מוקדם."},
+  {name:"NIPT (בדיקת דנ\"א עוברי)",weeks:"מ-שבוע 10 ועד שבוע 13",dr:"10/07/26 – 06/08/26",tag:"MM",venue:"P",cost:"₪2,400–₪6,000 | החזר חלקי מושלם פלטינום",det:"בדיקת דם לאיתור טריזומיה 21/18/13. בדיקת סקר (לא אבחנתית). אינה בסל הבסיסי. ⚠️ מומלץ מאוד בגיל 40+."},
+  {name:"סיסי שליה (CVS)",weeks:"שבועות 11–14",dr:"17/07/26 – 13/08/26",tag:"A",venue:"B",cost:"כללית: ₪800 השתתפות עצמית | פרטי: החזר מושלם",det:"בדיקה פולשנית אבחנתית. מגיל 32+ בסל הבסיסי. חלופית לדיקור מי שפיר. לפי ממצאי הסקרים."}
 ],
 t2:[
-  {name:"סקירת מערכות מוקדמת", weeks:"שבועות 15–17", dr:"14/08/26 – 03/09/26", tag:"C", venue:"B", cost:"כללית מושלם/פלטינום: השתתפות עצמית | ⚠️ זכאות אחת בלבד עם מאוחרת", det:"אולטרסאונד ראשוני של אברי העובר. ⚠️ כללית מממנת סקירה אחת בלבד (מוקדמת או מאוחרת). מומלץ לשמור את הזכאות לסקירה המאוחרת."},
-  {name:"סקר ביוכימי שליש שני (תבחין)", weeks:"שבועות 15–18", dr:"14/08/26 – 10/09/26", tag:"M", venue:"K", cost:"תבחין משולש: מסובסד | תבחין מרובע: תוספת תשלום", det:"בדיקת דם: AFP, HCG, אסטריול (± אינהיבין). מחשבת סיכון לתסמונת דאון ומומים בצינור העצבי."},
-  {name:"בדיקת העמסת סוכר מוקדמת (GCT)", weeks:"שבועות 14–16", dr:"07/08/26 – 27/08/26", tag:"MM", venue:"K", cost:"ללא עלות", det:"⚠️ עדיפות גבוהה! סוכרת הריון בהריון הקודם + BMI 30 + גיל 40. בדיקה מוקדמת לפי אינדיקציה – לתאם עם ד״ר בוצ׳ן."},
-  {name:"סקירת מערכות מאוחרת", weeks:"שבועות 20–23", dr:"18/09/26 – 15/10/26", tag:"C", venue:"B", cost:"כללית: השתתפות עצמית | פרטי: החזר 75% דרך מושלם", det:"הבדיקה הקריטית ביותר – מוח, לב, עמוד שדרה, כליות, פנים, שלמות אברים. ⚠️ זכאות אחת בלבד (מוקדמת/מאוחרת) – כדאי לשמור לכאן."},
-  {name:"אקו לב עוברי", weeks:"שבועות 22–24", dr:"02/10/26 – 22/10/26", tag:"MM", venue:"B", cost:"פרטי ₪800–₪1,500 | החזר חלקי מושלם/פלטינום", det:"⚠️ מומלץ בגלל סוכרת הריון בהריון הקודם (גורם סיכון למומי לב עובריים). אינו בסל הבסיסי."},
-  {name:"דיקור מי שפיר", weeks:"שבועות 17–23", dr:"28/08/26 – 15/10/26", tag:"A", venue:"B", cost:"כללית: ₪800 השתתפות עצמית | פרטי: החזר מושלם", det:"בדיקה פולשנית אבחנתית. מגיל 32+ בסל הבסיסי. חלופית לסיסי שליה. לפי ממצאי הסקרים."},
-  {name:"בדיקת העמסת סוכר שגרתית (GTT)", weeks:"שבועות 24–28", dr:"16/10/26 – 19/11/26", tag:"C", venue:"K", cost:"ללא עלות", det:"שתיית 50g גלוקוז + בדיקת דם שעה לאחר מכן. אם >140 → GTT מורחב 100g/3 שעות."},
-  {name:"בדיקות דם – ספירה + פריטין", weeks:"שבועות 24–28", dr:"16/10/26 – 19/11/26", tag:"C", venue:"K", cost:"ללא עלות", det:"ספירת דם + פריטין לאיתור אנמיה. להשוות לתוצאות 18/06/26 (HB 12.7, פריטין 34.6)."}
+  {name:"סקירת מערכות מוקדמת",weeks:"שבועות 15–17",dr:"14/08/26 – 03/09/26",tag:"C",venue:"B",cost:"כללית מושלם/פלטינום: השתתפות עצמית | ⚠️ זכאות אחת בלבד עם מאוחרת",det:"⚠️ כללית מממנת סקירה אחת בלבד. מומלץ לשמור הזכאות לסקירה המאוחרת."},
+  {name:"סקר ביוכימי שליש שני (תבחין)",weeks:"שבועות 15–18",dr:"14/08/26 – 10/09/26",tag:"M",venue:"K",cost:"תבחין משולש: מסובסד | תבחין מרובע: תוספת תשלום",det:"בדיקת דם: AFP, HCG, אסטריול (± אינהיבין). מחשבת סיכון לתסמונת דאון ומומים בצינור העצבי."},
+  {name:"בדיקת העמסת סוכר מוקדמת (GCT)",weeks:"שבועות 14–16",dr:"07/08/26 – 27/08/26",tag:"MM",venue:"K",cost:"ללא עלות",det:"⚠️ עדיפות גבוהה! סוכרת הריון בהריון הקודם + BMI 30 + גיל 40. לתאם עם ד\"ר בוצ'ן."},
+  {name:"סקירת מערכות מאוחרת",weeks:"שבועות 20–23",dr:"18/09/26 – 15/10/26",tag:"C",venue:"B",cost:"כללית: השתתפות עצמית | פרטי: החזר 75% דרך מושלם",det:"הבדיקה הקריטית ביותר – מוח, לב, עמוד שדרה, כליות, פנים. ⚠️ זכאות אחת בלבד – כדאי לשמור לכאן."},
+  {name:"אקו לב עוברי",weeks:"שבועות 22–24",dr:"02/10/26 – 22/10/26",tag:"MM",venue:"B",cost:"פרטי ₪800–₪1,500 | החזר חלקי מושלם/פלטינום",det:"⚠️ מומלץ בגלל סוכרת הריון בהריון הקודם. אינו בסל הבסיסי."},
+  {name:"דיקור מי שפיר",weeks:"שבועות 17–23",dr:"28/08/26 – 15/10/26",tag:"A",venue:"B",cost:"כללית: ₪800 השתתפות עצמית | פרטי: החזר מושלם",det:"בדיקה פולשנית אבחנתית. מגיל 32+ בסל הבסיסי. חלופית לסיסי שליה. לפי ממצאי הסקרים."},
+  {name:"בדיקת העמסת סוכר שגרתית (GTT)",weeks:"שבועות 24–28",dr:"16/10/26 – 19/11/26",tag:"C",venue:"K",cost:"ללא עלות",det:"שתיית 50g גלוקוז + בדיקת דם שעה לאחר מכן. אם >140 → GTT מורחב 100g/3 שעות."},
+  {name:"בדיקות דם – ספירה + פריטין",weeks:"שבועות 24–28",dr:"16/10/26 – 19/11/26",tag:"C",venue:"K",cost:"ללא עלות",det:"ספירת דם + פריטין לאיתור אנמיה. להשוות לתוצאות 18/06/26 (HB 12.7, פריטין 34.6)."}
 ],
 t3:[
-  {name:"ביקורים מסודרים – רופא + אחות", weeks:"שבועות 28–36", dr:"13/11/26 – 14/01/27", tag:"C", venue:"K", cost:"השתתפות עצמית רגילה", det:"מעקב לחץ דם, משקל, קרקעית רחם, דופק עובר. מ-שבוע 32 – ביקורי אחות כל שבועיים. ⚠️ ניטור BP חשוב – סיכון לרעלת הריון."},
-  {name:"אולטרסאונד גדילה שליש שלישי", weeks:"שבועות 32–36", dr:"11/12/26 – 14/01/27", tag:"M", venue:"B", cost:"כללית: השתתפות עצמית | פרטי ₪400–₪700", det:"הערכת גודל וצמיחת עובר, מיקום שליה, כמות מי שפיר ומצג – חשוב לתכנון קיסרי."},
-  {name:"תרביות GBS (סטרפטוקוקוס B)", weeks:"שבועות 35–37", dr:"01/01/27 – 21/01/27", tag:"C", venue:"K", cost:"ללא עלות", det:"תרבית נרתיקית/פי הטבעת לאיתור GBS. אם חיובי – אנטיביוטיקה בלידה."},
-  {name:"ייעוץ הרדמה טרום ניתוחי (קיסרי)", weeks:"שבועות 35–37", dr:"01/01/27 – 21/01/27", tag:"C", venue:"K", cost:"ללא עלות", det:"פגישת הכנה עם מרדים לקיסרי המתוכנן. קביעת מועד הניתוח (לרוב שבוע 38–39)."},
-  {name:"CTG (מוניטור עוברי)", weeks:"מ-שבוע 36", dr:"מ-08/01/27", tag:"Z", venue:"K", cost:"ללא עלות", det:"מעקב אלקטרוני אחר דופק עובר ופעילות רחם לקראת הלידה."},
-  {name:"קיסרי מתוכנן", weeks:"שבועות 38–39", dr:"22/01/27 – 04/02/27", tag:"C", venue:"K", cost:"כלול בסל", det:"לידה בקיסרי לפי תכנון. בדיקות דם טרום ניתוחיות, קביעת מועד עם ד״ר בוצ׳ן ואנסתזיולוג. EDD: 04/02/27."}
+  {name:"ביקורים מסודרים – רופא + אחות",weeks:"שבועות 28–36",dr:"13/11/26 – 14/01/27",tag:"C",venue:"K",cost:"השתתפות עצמית רגילה",det:"מעקב לחץ דם, משקל, קרקעית רחם, דופק עובר. מ-שבוע 32 – ביקורי אחות כל שבועיים. ⚠️ ניטור BP חשוב."},
+  {name:"אולטרסאונד גדילה שליש שלישי",weeks:"שבועות 32–36",dr:"11/12/26 – 14/01/27",tag:"M",venue:"B",cost:"כללית: השתתפות עצמית | פרטי ₪400–₪700",det:"הערכת גודל וצמיחת עובר, מיקום שליה, כמות מי שפיר ומצג – חשוב לתכנון קיסרי."},
+  {name:"תרביות GBS (סטרפטוקוקוס B)",weeks:"שבועות 35–37",dr:"01/01/27 – 21/01/27",tag:"C",venue:"K",cost:"ללא עלות",det:"תרבית נרתיקית/פי הטבעת. אם חיובי – אנטיביוטיקה בלידה."},
+  {name:"ייעוץ הרדמה טרום ניתוחי (קיסרי)",weeks:"שבועות 35–37",dr:"01/01/27 – 21/01/27",tag:"C",venue:"K",cost:"ללא עלות",det:"פגישת הכנה עם מרדים לקיסרי המתוכנן. קביעת מועד הניתוח (לרוב שבוע 38–39)."},
+  {name:"CTG (מוניטור עוברי)",weeks:"מ-שבוע 36",dr:"מ-08/01/27",tag:"Z",venue:"K",cost:"ללא עלות",det:"מעקב אלקטרוני אחר דופק עובר ופעילות רחם לקראת הלידה."},
+  {name:"קיסרי מתוכנן",weeks:"שבועות 38–39",dr:"22/01/27 – 04/02/27",tag:"C",venue:"K",cost:"כלול בסל",det:"לידה בקיסרי לפי תכנון. בדיקות דם טרום ניתוחיות, קביעת מועד עם ד\"ר בוצ'ן ואנסתזיולוג. EDD: 04/02/27."}
 ],
 priv:[
-  {name:"ייעוץ תזונאית / דיאטנית", when:"כמה שיותר מוקדם", dr:"דחוף – לפני שבוע 10", venue:"B", cost:"הפניה כללית: כלול | פרטי ₪350–₪600/פגישה", det:"בוצע: תיאום עם טובה קראוז מ-14/06/26. תוכנית ספירת פחמימות פעילה. ⚠️ GDM + BMI 30 + גיל 40."},
-  {name:"ייעוץ גנטי", when:"לפי ממצאי הסקרים", dr:"לפי ממצאים", venue:"B", cost:"כללית בהפניה: כלול | פרטי ₪500–₪1,000", det:"בעקבות ממצא חריג בסקר, היסטוריה משפחתית. ניתן לקבל הפניה מד״ר בוצ׳ן."},
-  {name:"ביקורי רופא נשים פרטי", when:"לאורך ההריון", dr:"לפי בחירה", venue:"P", cost:"₪400–₪700/ביקור | החזר חלקי מושלם", det:"מעקב אישי, זמינות גבוהה, ליווי עד לידה."},
-  {name:"קורס הכנה ללידה", when:"שליש שלישי", dr:"נובמבר–ינואר 2027", venue:"B", cost:"₪800–₪2,500 | החזר חלקי מושלם", det:"סדנאות זוגיות, שיטות להפגת כאב, הנקה."},
-  {name:"דולה / ליווי לידה", when:"לידה", dr:"פברואר 2027", venue:"P", cost:"₪2,000–₪5,000 | ייתכן החזר חלקי פלטינום", det:"תמיכה אישית רצופה בלידה. אינה בסל הבסיסי."},
-  {name:"שימור דם טבורי", when:"לידה – לסגור מראש", dr:"לפני הלידה", venue:"P", cost:"₪3,000–₪5,000 + ₪500–₪1,000/שנה", det:"אחסון תאי גזע מדם חבל הטבור. שנוי במחלוקת רפואית – האיגודים הרפואיים אינם ממליצים על שימור פרטי."}
+  {name:"ייעוץ תזונאית / דיאטנית",when:"כמה שיותר מוקדם",dr:"דחוף – לפני שבוע 10",venue:"B",cost:"הפניה כללית: כלול | פרטי ₪350–₪600/פגישה",det:"בוצע: תיאום עם טובה קראוז מ-14/06/26. תוכנית ספירת פחמימות פעילה."},
+  {name:"ייעוץ גנטי",when:"לפי ממצאי הסקרים",dr:"לפי ממצאים",venue:"B",cost:"כללית בהפניה: כלול | פרטי ₪500–₪1,000",det:"בעקבות ממצא חריג בסקר. ניתן לקבל הפניה מד\"ר בוצ'ן."},
+  {name:"ביקורי רופא נשים פרטי",when:"לאורך ההריון",dr:"לפי בחירה",venue:"P",cost:"₪400–₪700/ביקור | החזר חלקי מושלם",det:"מעקב אישי, זמינות גבוהה, ליווי עד לידה."},
+  {name:"קורס הכנה ללידה",when:"שליש שלישי",dr:"נובמבר–ינואר 2027",venue:"B",cost:"₪800–₪2,500 | החזר חלקי מושלם",det:"סדנאות זוגיות, שיטות להפגת כאב, הנקה."},
+  {name:"דולה / ליווי לידה",when:"לידה",dr:"פברואר 2027",venue:"P",cost:"₪2,000–₪5,000 | ייתכן החזר חלקי פלטינום",det:"תמיכה אישית רצופה בלידה."},
+  {name:"שימור דם טבורי",when:"לידה – לסגור מראש",dr:"לפני הלידה",venue:"P",cost:"₪3,000–₪5,000 + ₪500–₪1,000/שנה",det:"אחסון תאי גזע מדם חבל הטבור. שנוי במחלוקת רפואית."}
 ]
 };
 
-var TAG = {C:"bC",MM:"bMM",M:"bM",A:"bA",Z:"bZ"};
-var TAGL = {C:"חובה",MM:"מומלץ מאוד",M:"מומלץ",A:"לפי אינדיקציה",Z:"לפי צורך"};
-var VENUE = {K:"vK",B:"vB",P:"vP"};
-var VENUEL = {K:"כללית",B:"כללית + פרטי",P:"פרטי בלבד"};
-var FOOT = {
-  t1:"🫐 שליש ראשון: שבוע 6 = אוכמנייה (~6מ״מ). שבוע 13 = שזיף קטן (~7–8 ס״מ).",
-  t2:"🍑 שליש שני: שבוע 14 = לימון. שבוע 20 = אפרסק (~25 ס״מ, ~300 גרם). שבוע 27 = חצילון (~36 ס״מ, ~900 גרם).",
-  t3:"🍉 שליש שלישי: שבוע 28 = אנגוריה (~37 ס״מ, ~1 ק״ג). שבוע 36 = ~47 ס״מ, ~2.6 ק״ג. שבוע 38–39 = ~3–3.5 ק״ג.",
+var TAG={C:"bC",MM:"bMM",M:"bM",A:"bA",Z:"bZ"};
+var TAGL={C:"חובה",MM:"מומלץ מאוד",M:"מומלץ",A:"לפי אינדיקציה",Z:"לפי צורך"};
+var VENUE={K:"vK",B:"vB",P:"vP"};
+var VENUEL={K:"כללית",B:"כללית + פרטי",P:"פרטי בלבד"};
+var FOOT={
+  t1:"🫐 שליש ראשון: שבוע 6 = אוכמנייה (~6מ\"מ). שבוע 13 = שזיף קטן (~7–8 ס\"מ).",
+  t2:"🍑 שליש שני: שבוע 14 = לימון. שבוע 20 = אפרסק (~25 ס\"מ, ~300 גרם). שבוע 27 = חצילון (~36 ס\"מ, ~900 גרם).",
+  t3:"🍉 שליש שלישי: שבוע 28 = אנגוריה (~37 ס\"מ, ~1 ק\"ג). שבוע 36 = ~47 ס\"מ, ~2.6 ק\"ג. שבוע 38–39 = ~3–3.5 ק\"ג.",
   pre:"💡 כללית מושלם/פלטינום: החזר 75% על בדיקות פרטיות עד תקרה של ~₪2,248 להריון.",
-  priv:"💡 לכל בדיקה פרטית – שמרי קבלה מקורית + סיכום רפואי להגשת בקשת החזר דרך מושלם."
+  priv:"💡 שמרי קבלה מקורית + סיכום רפואי לכל בדיקה פרטית להגשת החזר דרך מושלם."
 };
 
-var activeTab = "t1";
-var state = {};
+var activeTab="t1";
+var state={};
 
-function loadState() {
-  try { var s = localStorage.getItem("preg-v3"); if (s) state = JSON.parse(s); } catch(e) {}
-}
-function saveState() {
-  try { localStorage.setItem("preg-v3", JSON.stringify(state)); } catch(e) {}
-}
-function getItem(sec, idx) {
-  return state[sec + "-" + idx] || {checked: false, appt: ""};
-}
-function setChecked(sec, idx, val) {
-  var k = sec + "-" + idx;
-  state[k] = {checked: val, appt: (state[k] || {}).appt || ""};
-  saveState();
-}
-function setAppt(sec, idx, val) {
-  var k = sec + "-" + idx;
-  state[k] = {checked: (state[k] || {}).checked || false, appt: val};
-  saveState();
-}
-function doneCount(sec) {
-  var t = TESTS[sec] || [];
-  var n = 0;
-  for (var i = 0; i < t.length; i++) { if (getItem(sec, i).checked) n++; }
-  return n;
-}
+function loadState(){try{var s=localStorage.getItem("preg-v3");if(s)state=JSON.parse(s);}catch(e){}}
+function saveState(){try{localStorage.setItem("preg-v3",JSON.stringify(state));}catch(e){}}
+function getItem(sec,idx){return state[sec+"-"+idx]||{checked:false,appt:""};}
+function setChecked(sec,idx,val){var k=sec+"-"+idx;var it=state[k]||{};state[k]={checked:val,appt:it.appt||""};saveState();}
+function setAppt(sec,idx,val){var k=sec+"-"+idx;var it=state[k]||{};state[k]={checked:it.checked||false,appt:val};saveState();}
+function doneCount(sec){var t=TESTS[sec]||[];var n=0;for(var i=0;i<t.length;i++){if(getItem(sec,i).checked)n++;}return n;}
 
-function fmtDate(val) {
-  if (!val) return "";
-  var parts = val.split("T");
-  var datePart = parts[0];
-  var timePart = parts.length > 1 ? parts[1] : "";
-  var dp = datePart.split("-");
-  if (dp.length < 3) return "";
-  var out = dp[2] + "/" + dp[1] + "/" + dp[0].slice(2);
-  if (timePart) {
-    var tp = timePart.split(":");
-    out += " " + tp[0] + ":" + tp[1];
-  }
+function fmtDate(val){
+  if(!val)return "";
+  var parts=val.split("T");
+  var dp=parts[0].split("-");
+  if(dp.length<3)return "";
+  var out=dp[2]+"/"+dp[1]+"/"+dp[0].slice(2);
+  if(parts.length>1&&parts[1]){var tp=parts[1].split(":");out+=" "+tp[0]+":"+tp[1];}
   return out;
 }
 
-function renderTabs() {
-  var html = "";
-  for (var s = 0; s < SECTIONS.length; s++) {
-    var sec = SECTIONS[s];
-    var done = doneCount(sec.key);
-    var total = (TESTS[sec.key] || []).length;
-    var badge = done > 0 ? '<span class="tbadge">' + done + "/" + total + "</span>" : "";
-    var cls = activeTab === sec.key ? " on" : "";
-    html += '<button class="tab' + cls + '" onclick="switchTab(\'' + sec.key + '\')">' +
-      sec.emoji + " " + sec.label + badge + "</button>";
+function renderTabs(){
+  var html="";
+  for(var s=0;s<SECTIONS.length;s++){
+    var sec=SECTIONS[s];
+    var done=doneCount(sec.key);
+    var total=(TESTS[sec.key]||[]).length;
+    var badge=done>0?'<span class="tbadge">'+done+"/"+total+"</span>":"";
+    var cls=activeTab===sec.key?" on":"";
+    html+='<button class="tab'+cls+'" onclick="switchTab(\''+sec.key+'\')">'+sec.emoji+" "+sec.label+badge+"</button>";
   }
-  document.getElementById("tabs").innerHTML = html;
+  document.getElementById("tabs").innerHTML=html;
 }
 
-function renderContent() {
-  var sec = null;
-  for (var s = 0; s < SECTIONS.length; s++) {
-    if (SECTIONS[s].key === activeTab) { sec = SECTIONS[s]; break; }
-  }
-  var tests = TESTS[activeTab] || [];
-  var isPriv = activeTab === "priv";
-  var done = doneCount(activeTab);
-  var html = "";
+function renderContent(){
+  var sec=null;
+  for(var s=0;s<SECTIONS.length;s++){if(SECTIONS[s].key===activeTab){sec=SECTIONS[s];break;}}
+  var tests=TESTS[activeTab]||[];
+  var isPriv=activeTab==="priv";
+  var done=doneCount(activeTab);
+  var html="";
 
-  html += '<div class="sec-hdr">';
-  html += '<div><div class="sec-title">' + sec.emoji + " " + sec.label + "</div>";
-  html += '<div class="sec-sub">' + sec.sub + "</div></div>";
-  html += '<div class="prog">' + done + "/" + tests.length + " בוצע</div></div>";
-  html += '<div class="cards">';
+  html+='<div class="sec-hdr"><div><div class="sec-title">'+sec.emoji+" "+sec.label+"</div>";
+  html+='<div class="sec-sub">'+sec.sub+"</div></div>";
+  html+='<div class="prog">'+done+"/"+tests.length+" בוצע</div></div>";
+  html+='<div class="cards">';
 
-  for (var i = 0; i < tests.length; i++) {
-    var t = tests[i];
-    var item = getItem(activeTab, i);
-    var cardCls = "card";
-    if (item.checked) cardCls += " done";
-    else if (t.urgent) cardCls += " urgent";
+  for(var i=0;i<tests.length;i++){
+    var t=tests[i];
+    var item=getItem(activeTab,i);
+    var cls="card";
+    if(item.checked)cls+=" done";
+    else if(t.urgent)cls+=" urgent";
 
-    var tags = "";
-    if (t.tag) tags += '<span class="badge ' + TAG[t.tag] + '">' + TAGL[t.tag] + "</span>";
-    if (t.venue) tags += '<span class="badge ' + VENUE[t.venue] + '">' + VENUEL[t.venue] + "</span>";
-    if (t.urgent && !item.checked) tags += '<span class="badge bD">⚡ דחוף</span>';
+    var tags="";
+    if(t.tag)tags+='<span class="badge '+TAG[t.tag]+'">'+TAGL[t.tag]+"</span>";
+    if(t.venue)tags+='<span class="badge '+VENUE[t.venue]+'">'+VENUEL[t.venue]+"</span>";
+    if(t.urgent&&!item.checked)tags+='<span class="badge bD">⚡ דחוף</span>';
 
-    var apptDisplay = item.appt ? '<div class="card-appt">🗓 תור: ' + fmtDate(item.appt) + "</div>" : "";
-    var weeksLine = isPriv ? (t.when || "") : (t.weeks || "");
-    var drLine = t.dr ? '<div class="card-dr">📅 ' + t.dr + "</div>" : "";
+    var apptMini=item.appt?'<div class="card-appt">🗓 תור: '+fmtDate(item.appt)+"</div>":"";
+    var weeksLine=isPriv?(t.when||""):(t.weeks||"");
+    var drLine=t.dr?'<div class="card-dr">📅 '+t.dr+"</div>":"";
 
-    // appt section
-    var apptSection = "";
-    if (item.appt) {
-      apptSection = '<div class="appt-row">' +
-        '<span class="appt-lbl">🗓 תור:</span>' +
-        '<span class="appt-val">' + fmtDate(item.appt) + "</span>" +
-        '<label for="ai-' + activeTab + '-' + i + '" class="appt-btn" style="cursor:pointer">✎</label>' +
-        '<button class="appt-btn" onclick="clearAppt(\'' + activeTab + '\',' + i + ')">✕</button>' +
-        '</div>';
+    // Appt block — simple visible input, no JS picker tricks
+    var apptTop="";
+    if(item.appt){
+      apptTop='<div class="appt-top">'
+        +'<span class="appt-lbl">🗓 תור:</span>'
+        +'<span class="appt-val">'+fmtDate(item.appt)+"</span>"
+        +'<button class="appt-clear" onclick="event.stopPropagation();clearAppt(\''+activeTab+'\','+i+')">✕</button>'
+        +'</div>';
     } else {
-      apptSection = '<div class="appt-row" style="padding:0">' +
-        '<label for="ai-' + activeTab + '-' + i + '" class="appt-add" style="display:block;padding:10px 12px;cursor:pointer">+ קביעת תור</label>' +
-        '</div>';
+      apptTop='<div class="appt-top"><span class="appt-lbl">🗓 קביעת תור:</span></div>';
     }
+    var apptBlock='<div class="appt-block" onclick="event.stopPropagation()">'
+      +apptTop
+      +'<input type="datetime-local" class="appt-input" id="ai-'+activeTab+'-'+i+'"'
+      +(item.appt?' value="'+item.appt+'"':'')
+      +' onchange="apptChanged(\''+activeTab+'\','+i+',this.value)">'
+      +'</div>';
 
-    var costSection = t.cost ?
-      '<div class="meta-row"><div><div class="meta-lbl">עלות</div><div class="meta-val">' + t.cost + "</div></div></div>" : "";
+    var costSection=t.cost?'<div class="meta-row"><div><div class="meta-lbl">עלות</div><div class="meta-val">'+t.cost+"</div></div></div>":"";
 
-    html += '<div class="' + cardCls + '" id="c-' + activeTab + '-' + i + '">';
-    html += '<div class="card-head" onclick="toggleCard(\'' + activeTab + '\',' + i + ')">';
-    html += '<div class="chk' + (item.checked ? " on" : "") + '" onclick="event.stopPropagation();toggleCheck(\'' + activeTab + '\',' + i + ')">';
-    html += '<svg class="chk-ico" width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    html += '</div>';
-    html += '<div class="card-body">';
-    html += '<div class="card-name">' + t.name + "</div>";
-    html += '<div class="card-tags">' + tags + "</div>";
-    html += '<div class="card-weeks">' + weeksLine + "</div>";
-    html += drLine;
-    html += apptDisplay;
-    html += "</div>";
-    html += '<div class="card-chev">▼</div>';
-    html += "</div>";
-    html += '<div class="card-exp">';
-    html += '<div class="card-det">' + t.det + "</div>";
-    html += apptSection;
-    html += '<input type="datetime-local" class="appt-hidden" id="ai-' + activeTab + '-' + i + '" onchange="pickDone(\'' + activeTab + '\',' + i + ',this.value)">';
-    html += costSection;
-    html += "</div></div>";
+    html+='<div class="'+cls+'" id="c-'+activeTab+'-'+i+'">';
+    html+='<div class="card-head" onclick="toggleCard(\''+activeTab+'\','+i+')">';
+    html+='<div class="chk'+(item.checked?" on":"")+'" onclick="event.stopPropagation();toggleCheck(\''+activeTab+'\','+i+')">';
+    html+='<svg class="chk-ico" width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    html+='</div>';
+    html+='<div class="card-body">';
+    html+='<div class="card-name">'+t.name+"</div>";
+    html+='<div class="card-tags">'+tags+"</div>";
+    html+='<div class="card-weeks">'+weeksLine+"</div>";
+    html+=drLine;
+    html+=apptMini;
+    html+="</div>";
+    html+='<div class="card-chev">▼</div>';
+    html+="</div>";
+    html+='<div class="card-exp">';
+    html+='<div class="card-det">'+t.det+"</div>";
+    html+=apptBlock;
+    html+=costSection;
+    html+="</div></div>";
   }
 
-  html += "</div>";
-  if (FOOT[activeTab]) html += '<div class="foot-note">' + FOOT[activeTab] + "</div>";
-  document.getElementById("content").innerHTML = html;
+  html+="</div>";
+  if(FOOT[activeTab])html+='<div class="foot-note">'+FOOT[activeTab]+"</div>";
+  document.getElementById("content").innerHTML=html;
 }
 
-function render() { renderTabs(); renderContent(); }
-function switchTab(k) { activeTab = k; render(); window.scrollTo({top:0,behavior:"smooth"}); }
-function toggleCard(sec, idx) { document.getElementById("c-" + sec + "-" + idx).classList.toggle("open"); }
-function toggleCheck(sec, idx) {
-  var item = getItem(sec, idx);
-  setChecked(sec, idx, !item.checked);
+function render(){renderTabs();renderContent();}
+function switchTab(k){activeTab=k;render();window.scrollTo({top:0,behavior:"smooth"});}
+
+function toggleCard(sec,idx){
+  var c=document.getElementById("c-"+sec+"-"+idx);
+  c.classList.toggle("open");
+}
+
+function toggleCheck(sec,idx){
+  setChecked(sec,idx,!getItem(sec,idx).checked);
   render();
 }
-function openPicker(sec, idx) {
-  var el = document.getElementById("ai-" + sec + "-" + idx);
-  if (!el) return;
-  var item = getItem(sec, idx);
-  if (!item.appt) {
-    var d = new Date();
-    d.setDate(d.getDate() + 1);
-    var pad = function(n) { return n < 10 ? "0" + n : "" + n; };
-    el.value = d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()) + "T09:00";
-  } else {
-    el.value = item.appt;
+
+function apptChanged(sec,idx,val){
+  setAppt(sec,idx,val);
+  // just update display without full re-render to keep card open
+  var mini=document.querySelector("#c-"+sec+"-"+idx+" .card-appt");
+  if(!mini){
+    var body=document.querySelector("#c-"+sec+"-"+idx+" .card-body");
+    if(body){
+      var d=document.createElement("div");
+      d.className="card-appt";
+      body.appendChild(d);
+      mini=d;
+    }
+  }
+  if(mini)mini.textContent=val?"🗓 תור: "+fmtDate(val):"";
+  // update top row in expanded
+  var top=document.querySelector("#c-"+sec+"-"+idx+" .appt-top");
+  if(top){
+    if(val){
+      top.innerHTML='<span class="appt-lbl">🗓 תור:</span>'
+        +'<span class="appt-val">'+fmtDate(val)+"</span>"
+        +'<button class="appt-clear" onclick="event.stopPropagation();clearAppt(\''+sec+'\','+idx+')">✕</button>';
+    } else {
+      top.innerHTML='<span class="appt-lbl">🗓 קביעת תור:</span>';
+    }
   }
 }
-function pickDone(sec, idx, val) {
-  var el = document.getElementById("ai-" + sec + "-" + idx);
-  if (el) el.style.pointerEvents = "none";
-  if (val) {
-    setAppt(sec, idx, val);
-    render();
-    setTimeout(function() {
-      var c = document.getElementById("c-" + sec + "-" + idx);
-      if (c) c.classList.add("open");
-    }, 10);
-  }
-}
-function clearAppt(sec, idx) {
-  setAppt(sec, idx, "");
-  render();
-  setTimeout(function() {
-    var c = document.getElementById("c-" + sec + "-" + idx);
-    if (c) c.classList.add("open");
-  }, 10);
+
+function clearAppt(sec,idx){
+  setAppt(sec,idx,"");
+  var el=document.getElementById("ai-"+sec+"-"+idx);
+  if(el)el.value="";
+  apptChanged(sec,idx,"");
 }
 
 loadState();
